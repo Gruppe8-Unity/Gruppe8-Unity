@@ -361,6 +361,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 10
   playerTransform: {fileID: 0}
+  playerAnimator: {fileID: 2837072102746434534}
 --- !u!58 &3000926704807934192
 CircleCollider2D:
   m_ObjectHideFlags: 0
