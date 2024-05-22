@@ -21,6 +21,8 @@ public abstract class Enemy : MonoBehaviour
     private float _playerAwarenessDistance;
 
     private Transform _player;
+    public GameObject expPrefab;
+    public Transform dropPoint;
 
     private void Awake()
     {
@@ -67,6 +69,12 @@ public abstract class Enemy : MonoBehaviour
         {
             _rigidBody.velocity = transform.up * _speed;
         }
+    }
+    
+    void OnDestroy()
+    {
+        Debug.Log("OnDestroy1");
+        Instantiate(expPrefab, dropPoint.position, Quaternion.Euler(0, 0, 180));
     }
 
 }

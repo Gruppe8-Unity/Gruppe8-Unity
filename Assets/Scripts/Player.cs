@@ -12,6 +12,7 @@ public class Player : UIScript
     public float movementSpeed = 10.0f;
     public Transform playerTransform;
     public Animator playerAnimator;
+    public Transform firepoint;
     public float currentPlayerHealth;
     public float maxPlayerHealth = 100;
 
@@ -65,14 +66,30 @@ public class Player : UIScript
         Vector2 movementDirection = new Vector2(movementX, movementY);
         playerTransform.Translate(movementDirection);
         
+        if (horizontalMovement != 0.0f || verticalMovement != 0.0f)
+        {
+            float angle = Mathf.Atan2(verticalMovement, horizontalMovement) * Mathf.Rad2Deg;
+            firepoint.rotation = Quaternion.Euler(0, 0, angle);
+        }
+        
 
     }
     public void OnCollisionStay2D(Collision2D collision)
     {
-        if (Time.time > _lastDamageTime + _damageInterval)
+        Debug.Log(collision.gameObject.tag);
+        if (collision.gameObject.tag == "Enemy")
         {
-            TakeDamage(1);
-            _lastDamageTime = Time.time;
+            if (Time.time > _lastDamageTime + _damageInterval)
+            {
+                TakeDamage(1);
+                _lastDamageTime = Time.time;
+            }
+        }
+
+        if (collision.gameObject.tag == "SmallExp")
+        {
+            UpdateExperience(2.0f);
+            Destroy(collision.gameObject);
         }
     }
 
