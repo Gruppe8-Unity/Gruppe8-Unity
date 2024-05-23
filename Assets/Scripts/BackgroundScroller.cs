@@ -10,6 +10,7 @@ public class BackgroundScroller : MonoBehaviour
     void Start()
     {
         mat = GetComponent<Renderer>().material;
+        FindObjectOfType<AudioManager>().Play("MenuSound");
     }
 
     // Update is called once per frame

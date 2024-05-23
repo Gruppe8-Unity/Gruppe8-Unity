@@ -24,5 +24,6 @@ public class ThrowAxe : MonoBehaviour
     public void Throw()
     { 
         Instantiate(axePrefab, axeThrowPoint.position, axeThrowPoint.rotation);
+        FindObjectOfType<AudioManager>().Play("AxeSound");
     }
 }

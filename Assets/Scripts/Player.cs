@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
+using System.Collections;
 
 public class Player : UIScript
 {
@@ -65,6 +66,9 @@ public class Player : UIScript
             float angle = Mathf.Atan2(verticalMovement, horizontalMovement) * Mathf.Rad2Deg;
             firepoint.rotation = Quaternion.Euler(0, 0, angle);
         }
+
+        horizontalMovement = 0.0f;
+        verticalMovement = 0.0f;
     }
     public void OnCollisionStay2D(Collision2D collision)
     {
@@ -80,14 +84,38 @@ public class Player : UIScript
         {
             UpdateExperience(2.0f);
             Destroy(collision.gameObject);
+            FindObjectOfType<AudioManager>().Play("ExpSound");
+            
         }
     }
     public void TakeDamage(int damage)
     {
         if(currentPlayerHealth <= 0f)
         {
-            SceneManager.LoadScene("StartMenu");
+            FindObjectOfType<AudioManager>().Play("PlayerDeathSound");
+            StartCoroutine(PlayerDeathWithDelay(0.6f)); 
+            
         }
         currentPlayerHealth -= damage;
+        FindObjectOfType<AudioManager>().Play("PlayerHitSound");
+    }
+    
+    
+    IEnumerator PlayerDeathWithDelay(float delayInSeconds)
+    {
+        yield return StartCoroutine(ShortDelay(delayInSeconds));
+        SceneManager.LoadScene("DeathScene");
+    }
+    
+    IEnumerator ShortDelay(float delayInSeconds)
+    {
+        float timer = 0f;
+        float targetTime = delayInSeconds;
+
+        while (timer < targetTime)
+        {
+            timer += Time.unscaledDeltaTime; 
+            yield return null;
+        }
     }
 }

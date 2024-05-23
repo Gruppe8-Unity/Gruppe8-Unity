@@ -9,15 +9,15 @@ public class SpawnSpirit : MonoBehaviour
     public float orbitSpeed = 20f; // Speed of rotation around the player
     public int numberOfSpirits = 5; // Number of spirits to spawn
     private List<GameObject> spirits = new List<GameObject>(); // List to store spawned spirits
-    public float timeUntilSpawn = 10;
-    public float timeUntilDespawn = 5;
+    public float timeUntilSpawn = 10f;
+    public float timeUntilDespawn = 5f;
     public bool isSpawned = false;
 
     void Update()
     {
         if (isSpawned)
         {
-            if (timeUntilDespawn <= 0)
+            if (timeUntilDespawn <= 0f)
             {
                 DeleteSpirits();
             }
@@ -34,7 +34,7 @@ public class SpawnSpirit : MonoBehaviour
         }
         else
         {
-            if (timeUntilSpawn <= 0)
+            if (timeUntilSpawn <= 0f)
             {
                 CreateSpirits();
 
@@ -45,7 +45,7 @@ public class SpawnSpirit : MonoBehaviour
     void CreateSpirits()
     {
         isSpawned = true;
-        timeUntilDespawn = 5;
+        timeUntilDespawn = 5f;
         for (int i = 0; i < numberOfSpirits; i++)
         {
             float angle = i * 360f / numberOfSpirits;
@@ -53,14 +53,17 @@ public class SpawnSpirit : MonoBehaviour
             GameObject newSpirit = Instantiate(spiritPrefab, position, Quaternion.identity);
             spirits.Add(newSpirit);
         }
+        FindObjectOfType<AudioManager>().Play("SpiritSound");
     }
     void DeleteSpirits()
     {
         isSpawned = false;
-        timeUntilSpawn = 10;
+        timeUntilSpawn = 10f;
         foreach (GameObject spirit in spirits)
         {
             Destroy(spirit);
         }
+        FindObjectOfType<AudioManager>().Play("SpiritSound");
+
     }
 }

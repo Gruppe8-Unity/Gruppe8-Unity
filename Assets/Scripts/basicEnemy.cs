@@ -72,17 +72,21 @@ public class basicEnemy : Enemy
         if (collision.gameObject.tag == "Arrow")
         {
             Destroy(gameObject);
-            Destroy(collision.gameObject);
+            collision.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            Destroy(collision.gameObject, 0.3f);
+            FindObjectOfType<AudioManager>().Play("EnemyDeathSound");
             OnKilled();
         }
         if(collision.gameObject.tag == "Spirit")
         {
             Destroy(gameObject);
+            FindObjectOfType<AudioManager>().Play("EnemyDeathSound");
             OnKilled();
         }
         if(collision.gameObject.tag == "Axe")
         {
             Destroy(gameObject);
+            FindObjectOfType<AudioManager>().Play("EnemyDeathSound");
             OnKilled();
         }
     }

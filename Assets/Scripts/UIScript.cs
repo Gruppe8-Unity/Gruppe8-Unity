@@ -28,6 +28,7 @@ public class UIScript : MonoBehaviour
     {
         SwitchBackground();
         UpdateExperience(0);
+        FindObjectOfType<AudioManager>().Play("Theme");
     }
 
     private void Update()
@@ -55,15 +56,16 @@ public class UIScript : MonoBehaviour
             levelCount++;
             requiredExperience *= 1.2f;
             SwitchBackground();
+            FindObjectOfType<AudioManager>().Play("LevelUp");
         }
         
         experienceBar.fillAmount = Mathf.Clamp( experienceCount / requiredExperience , 0, requiredExperience);
 
         playerExperience.text = $"{Mathf.Round(experienceCount)} / {Mathf.Round(requiredExperience)}";
         playerCurrentLevel.text = $"Level: {Mathf.Round(levelCount)}";
-        if(levelCount == 30)
+        if(levelCount == 15)
         {
-            SceneManager.LoadScene("StartMenu");
+            SceneManager.LoadScene("WinScene");
         }
     }
     public void SwitchBackground()
