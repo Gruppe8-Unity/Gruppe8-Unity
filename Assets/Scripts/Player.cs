@@ -11,8 +11,11 @@ public class Player : UIScript
     public Transform firepoint;
     public float currentPlayerHealth;
     public float maxPlayerHealth = 100;
+    
     private float damageInterval = 1.0f;
     private float lastDamageTime;
+    private float horizontalMovement;
+    private float verticalMovement;
 
     private void Start()
     {
@@ -23,8 +26,50 @@ public class Player : UIScript
 
     void Update()
     {
-        float verticalMovement = 0.0f;
-        float horizontalMovement = 0.0f;
+        PlayerMovement();
+    }
+
+    void PlayerMovement()
+    {
+        ResetXY();
+        CheckUserInputDirecton();
+
+        // Scaled movement in x and y directions
+        float movementX = ScaleCoordinate(horizontalMovement);
+        float movementY = ScaleCoordinate(verticalMovement);
+
+        SetAnimationParamters();
+        
+        Vector2 movementDirection = new Vector2(movementX, movementY);
+        MovePlayer(movementDirection);
+        
+        DetermineProjectileDirection();
+        ResetXY();
+    }
+
+    void MovePlayer(Vector2 direction)
+    {
+        playerTransform.Translate(direction);
+    }
+
+    void SetAnimationParamters()
+    {
+        // Set animator params
+        playerAnimator.SetFloat("DirectionY", verticalMovement);
+        playerAnimator.SetFloat("DirectionX", horizontalMovement);
+
+        // Stores the size (speed) of the vector
+        float vectorMagnitude = Calculate2DVectorMagnitude(horizontalMovement, verticalMovement);
+        playerAnimator.SetFloat("MovementSpeed", vectorMagnitude);
+    }
+
+    float ScaleCoordinate(float coordinate)
+    {
+        return movementSpeed * coordinate * Time.deltaTime;
+    }
+
+    void CheckUserInputDirecton()
+    {
         if (Input.GetKey(KeyCode.UpArrow))
         {
             verticalMovement = 1.0f;
@@ -45,30 +90,25 @@ public class Player : UIScript
         {
             horizontalMovement = -1.0f;
         }
+    }
 
-        // Scaled movement in x and y directions
-        float movementX = movementSpeed * horizontalMovement * Time.deltaTime;
-        float movementY = movementSpeed * verticalMovement * Time.deltaTime;
-
-        // Set animator params
-        playerAnimator.SetFloat("DirectionY", verticalMovement);
-        playerAnimator.SetFloat("DirectionX", horizontalMovement);
-
-        // Stores the size (speed) of the vector
-        float vectorMagnitude = Mathf.Sqrt(Mathf.Pow(horizontalMovement, 2) + Mathf.Pow(verticalMovement, 2));
-        playerAnimator.SetFloat("MovementSpeed", vectorMagnitude);
-
-        Vector2 movementDirection = new Vector2(movementX, movementY);
-        playerTransform.Translate(movementDirection);
-        
+    void ResetXY()
+    {
+        horizontalMovement = 0.0f;
+        verticalMovement = 0.0f;
+    }
+    void DetermineProjectileDirection()
+    {
         if (horizontalMovement != 0.0f || verticalMovement != 0.0f)
         {
             float angle = Mathf.Atan2(verticalMovement, horizontalMovement) * Mathf.Rad2Deg;
             firepoint.rotation = Quaternion.Euler(0, 0, angle);
         }
+    }
 
-        horizontalMovement = 0.0f;
-        verticalMovement = 0.0f;
+    float Calculate2DVectorMagnitude(float x, float y)
+    {
+        return Mathf.Sqrt(Mathf.Pow(x, 2) + Mathf.Pow(y, 2));
     }
     public void OnCollisionStay2D(Collision2D collision)
     {
