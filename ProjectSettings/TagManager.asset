@@ -6,18 +6,20 @@ TagManager:
   tags:
   - Enemy
   - Magnet
-  - Weapon
   - SmallExp
+  - Spirit
+  - Axe
+  - Arrow
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - EnemyLayer
   - Water
   - UI
-  - 
-  - 
-  - 
+  - ExpLayer
+  - WeaponLayer
+  - PlayerLayer
   - 
   - 
   - 

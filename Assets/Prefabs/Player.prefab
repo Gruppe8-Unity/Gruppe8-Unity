@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -147,7 +147,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1049153148}
   - component: {fileID: 1049153149}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: Magnet
   m_TagString: Magnet
   m_Icon: {fileID: 0}
@@ -215,7 +215,7 @@ GameObject:
   - component: {fileID: 2837072102746434528}
   - component: {fileID: 2837072102746434529}
   - component: {fileID: 2837072102746434534}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: PlayerSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -324,7 +324,7 @@ GameObject:
   - component: {fileID: 152184805}
   - component: {fileID: 7926383168189365766}
   - component: {fileID: 7325418905242355500}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -485,7 +485,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7455363422097730254}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: SpiritPoint1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -516,7 +516,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2254185876216769754}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: SpiritPoint4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -547,7 +547,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3846862604992250912}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: SpiritPoint5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -578,7 +578,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6656537871139698620}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: SpiritPoint2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -609,7 +609,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1348584624206113226}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -640,7 +640,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 247001994271859228}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: SpiritPoint3
   m_TagString: Untagged
   m_Icon: {fileID: 0}

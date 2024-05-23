@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6823943503056840238}
   - component: {fileID: 8070870258888706868}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Mouse_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 2090894574968416148}
   - component: {fileID: 2090894574968416147}
   - component: {fileID: 2249010877867602300}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: basicEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -135,7 +135,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -169,6 +169,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   expPrefab: {fileID: 4135077281637696610, guid: a3b3a6523f7fc0e4c875acef3d4f47a5, type: 3}
   expDropPoint: {fileID: 7227450124994824378}
+  expCollider: {fileID: 4135077281637696608, guid: a3b3a6523f7fc0e4c875acef3d4f47a5, type: 3}
+  enemyCollider: {fileID: 2090894574968416148}
+  enemyLayer: EnemyLayer
+  expLayer: ExperienceLayer
 --- !u!50 &2249010877867602300
 Rigidbody2D:
   serializedVersion: 4
@@ -205,7 +209,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7227450124994824378}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: DropPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}

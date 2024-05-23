@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 9096820325420170215}
   - component: {fileID: 336080285124020379}
   - component: {fileID: -7487872451052604862}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Arrow
-  m_TagString: Weapon
+  m_TagString: Arrow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -130,7 +130,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 72
+    m_Bits: 448
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

@@ -14,7 +14,8 @@ public class basicEnemy : Enemy
     private Transform playerTransform;
     public GameObject expPrefab;
     public Transform expDropPoint;
-
+    
+    
     private void Awake()
     {
         playerTransform = FindObjectOfType<Player>().transform;
@@ -38,6 +39,8 @@ public class basicEnemy : Enemy
         }
 
     }
+    
+
     private void RotateEnemy(bool towardsPlayer)
     {
         if (towardsPlayer)
@@ -66,11 +69,7 @@ public class basicEnemy : Enemy
     }
     public void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "SmallExp")
-        {
-            Destroy(collision.gameObject);
-        }
-        if (collision.gameObject.tag == "Weapon")
+        if (collision.gameObject.tag == "Arrow")
         {
             Destroy(gameObject);
             Destroy(collision.gameObject);
@@ -81,5 +80,11 @@ public class basicEnemy : Enemy
             Destroy(gameObject);
             OnKilled();
         }
+        if(collision.gameObject.tag == "Axe")
+        {
+            Destroy(gameObject);
+            OnKilled();
+        }
     }
+    
 }
