@@ -21,8 +21,6 @@ public class UIScript : MonoBehaviour
     public TextMeshProUGUI playerCurrentLevel;
     public Image experienceBar;
     public Image healthBar;
-
-
     
     private void Start()
     {
@@ -33,8 +31,17 @@ public class UIScript : MonoBehaviour
 
     private void Update()
     {
+        EscapeToMainMenu();
         UpdateHealthBar();
         UpdateScore();
+    }
+
+    void EscapeToMainMenu()
+    {
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("StartMenu");
+        }
     }
     
     private void UpdateHealthBar()
@@ -49,7 +56,21 @@ public class UIScript : MonoBehaviour
     
     public void UpdateExperience(float amount)
     {  
+        IncreaseExperience(amount);
+        CheckIfLevelSwap();
+        FillExperienceBar();
+        UpdateExperienceText();
+        UpdatePlayerLevel();
+        CheckWinCondition();
+    }
+
+    void IncreaseExperience(float amount)
+    {
         experienceCount += amount;
+    }
+
+    void CheckIfLevelSwap()
+    {
         if (experienceCount >= requiredExperience)
         {
             experienceCount = 0;
@@ -58,11 +79,25 @@ public class UIScript : MonoBehaviour
             SwitchBackground();
             FindObjectOfType<AudioManager>().Play("LevelUp");
         }
-        
-        experienceBar.fillAmount = Mathf.Clamp( experienceCount / requiredExperience , 0, requiredExperience);
+    }
 
-        playerExperience.text = $"{Mathf.Round(experienceCount)} / {Mathf.Round(requiredExperience)}";
+    void UpdatePlayerLevel()
+    {
         playerCurrentLevel.text = $"Level: {Mathf.Round(levelCount)}";
+    }
+
+    void UpdateExperienceText()
+    {
+        playerExperience.text = $"{Mathf.Round(experienceCount)} / {Mathf.Round(requiredExperience)}";
+    }
+
+    void FillExperienceBar()
+    {
+        experienceBar.fillAmount = Mathf.Clamp( experienceCount / requiredExperience , 0, requiredExperience);
+    }
+    void CheckWinCondition()
+    {
+        //Unity will not compare variable to levelCount, have to use constant. 
         if(levelCount == 15)
         {
             SceneManager.LoadScene("WinScene");
@@ -71,14 +106,12 @@ public class UIScript : MonoBehaviour
     public void SwitchBackground()
     {
         grids = FindObjectsOfType<Grid>();
-        foreach (Grid grid in grids)
-        {
-            foreach(TilemapRenderer renderer in grid.GetComponentsInChildren<TilemapRenderer>())
-            {
-                renderer.enabled = false;
-            }
-        }
+        DisableTileMaps();
+        EnableTileMap();
+    }
 
+    void EnableTileMap()
+    {
         int randomIndex = Random.Range(0, grids.Length);
         if (currentGrid == grids.Length - 1)
         {
@@ -88,14 +121,21 @@ public class UIScript : MonoBehaviour
         {
             currentGrid++;
         }
-        //while(randomIndex == currentGrid)
-        //{
-        //    randomIndex = Random.Range(0, grids.Length);
-        //}
-        //currentGrid = randomIndex;
+        
         foreach (TilemapRenderer renderer in grids[currentGrid].GetComponentsInChildren<TilemapRenderer>())
         {
             renderer.enabled = true;
+        }
+    }
+
+    void DisableTileMaps()
+    {
+        foreach (Grid grid in grids)
+        {
+            foreach(TilemapRenderer renderer in grid.GetComponentsInChildren<TilemapRenderer>())
+            {
+                renderer.enabled = false;
+            }
         }
     }
 }
