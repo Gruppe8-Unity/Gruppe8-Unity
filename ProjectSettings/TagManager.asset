@@ -10,6 +10,8 @@ TagManager:
   - Spirit
   - Axe
   - Arrow
+  - Weapon
+  - grassGround
   layers:
   - Default
   - TransparentFX

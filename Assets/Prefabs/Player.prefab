@@ -368,6 +368,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  tileMaps: []
   playerScore: {fileID: 0}
   playerExperience: {fileID: 0}
   playerCurrentLevel: {fileID: 0}
