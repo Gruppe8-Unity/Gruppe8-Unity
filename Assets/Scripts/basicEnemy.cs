@@ -7,14 +7,12 @@ public class basicEnemy : Enemy
     private float movementSpeed = 2;
     private float rotationSpeed = 1000;
     private float enemyAwarenessDistance = 50;
-
-    public Vector2 DirectionToPlayer { get; private set; }
-
     private Rigidbody2D playerRigidBody;
     private Transform playerTransform;
+
+    public Vector2 DirectionToPlayer { get; private set; }
     public GameObject expPrefab;
     public Transform expDropPoint;
-    
     
     private void Awake()
     {
@@ -24,32 +22,26 @@ public class basicEnemy : Enemy
 
     private void Update()
     {
+        DetermineEnemyRotation();
+    }
+
+    void DetermineEnemyRotation()
+    {
         Vector2 enemyToPlayerVector = playerTransform.position - transform.position;
         DirectionToPlayer = enemyToPlayerVector.normalized;
 
         if (enemyToPlayerVector.magnitude <= enemyAwarenessDistance)
         {
-            RotateEnemy(true);
-            SetVelocity();
+            RotateEnemy();
         }
-        else
-        {
-            RotateEnemy(false);
-            SetVelocity();
-        }
-
+        SetVelocity();
     }
     
-
-    private void RotateEnemy(bool towardsPlayer)
+    private void RotateEnemy()
     {
-        if (towardsPlayer)
-        {
-            Quaternion targetRotation = Quaternion.LookRotation(transform.forward, DirectionToPlayer);
-            Quaternion rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-            playerRigidBody.SetRotation(rotation);
-        }
-
+        Quaternion targetRotation = Quaternion.LookRotation(transform.forward, DirectionToPlayer);
+        Quaternion rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        playerRigidBody.SetRotation(rotation);
     }
     private void SetVelocity()
     {
@@ -90,5 +82,4 @@ public class basicEnemy : Enemy
             OnKilled();
         }
     }
-    
 }
