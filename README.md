@@ -1,6 +1,7 @@
-Unity Gruppe 6: Vampire Survivors Clone
+# Unity Gruppe 6: Vampire Survivors Clone
 NB! Gitbruker og commits går under UnityGruppe-8, dette er feil etter no kluss mellom Canvas og Wiseflow, dette prosjektet leveres offisielt da under UnityGruppe-6 slik som det står skrevet i Wiseflow.
 
+Spiller må loade MainMenuScene dersom spillet skal spilles direkte i Unity.  
 
 Vi i unity gruppe 6 valgte spillutvikling som tema og har laget en enkel klone av det populære spillet "Vampire Survivors" som er tilgjengelige på plattformer slik som Steam, GOG etc.
 
