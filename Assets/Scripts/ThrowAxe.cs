@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ThrowAxe : MonoBehaviour
@@ -7,11 +5,12 @@ public class ThrowAxe : MonoBehaviour
     public Transform axeThrowPoint;
     public GameObject axePrefab;
     public float axeTimer = 1;
-    void Start()
-    {
-        
-    }
     void Update()
+    {
+        DetermineThrow();
+    }
+
+    void DetermineThrow()
     {
         if (axeTimer <= 0)
         {
@@ -20,7 +19,6 @@ public class ThrowAxe : MonoBehaviour
         }
         axeTimer-= Time.deltaTime;
     }
-
     public void Throw()
     { 
         Instantiate(axePrefab, axeThrowPoint.position, axeThrowPoint.rotation);
