@@ -54,9 +54,9 @@ public class UIScript : MonoBehaviour
 
         playerExperience.text = $"{Mathf.Round(experienceCount)} / {Mathf.Round(requiredExperience)}";
         playerCurrentLevel.text = $"Level: {Mathf.Round(levelCount)}";
-        if(levelCount == 30)
+        if(levelCount == 15)
         {
-            SceneManager.LoadScene("StartMenu");
+            SceneManager.LoadScene("WinScene");
         }
     }
 }

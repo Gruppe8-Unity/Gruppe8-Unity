@@ -1148,6 +1148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 2059330634}
+  winningLevel: 2
   playerScore: {fileID: 960301019}
   playerExperience: {fileID: 2064653960}
   playerCurrentLevel: {fileID: 731375680}
