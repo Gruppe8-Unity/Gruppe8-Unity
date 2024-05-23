@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Shoot : MonoBehaviour
 {
-
     public Transform firePoint;
     public GameObject arrowPrefab;
     public float arrowTimer = 1;

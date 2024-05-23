@@ -167,11 +167,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 278b1d0ac47d9434db90530fffee8407, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 1
-  _rotationSpeed: 1000
-  _playerAwarenessDistance: 50
   expPrefab: {fileID: 4135077281637696610, guid: a3b3a6523f7fc0e4c875acef3d4f47a5, type: 3}
-  dropPoint: {fileID: 7227450124994824378}
+  expDropPoint: {fileID: 7227450124994824378}
 --- !u!50 &2249010877867602300
 Rigidbody2D:
   serializedVersion: 4
@@ -184,7 +181,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 70
+  m_Mass: 1
   m_LinearDrag: 10
   m_AngularDrag: 10
   m_GravityScale: 0

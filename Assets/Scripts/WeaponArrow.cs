@@ -1,28 +1,34 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WeaponArrow : Weapon
 {
 
     public float speed = 20f;
-    public Rigidbody2D rb;
+    public Rigidbody2D arrowRigidBody;
+    public float arrowTimer = 5;
     
     void Start()
     {
-        rb.velocity = transform.right * speed;
+        arrowRigidBody.velocity = transform.right * speed;
     }
 
-    void OnTriggerEnter2D(Collider2D hitInfo)
+    private void Update()
     {
-        if (hitInfo.gameObject.tag == "Enemy")
+        if(arrowTimer < 0)
         {
-            Debug.Log(hitInfo.name);
-            Destroy(gameObject);
-            Destroy(hitInfo.gameObject);
+            Destroy(gameObject); // To keep arrows from existing forever.
         }
-
+        arrowTimer -= Time.deltaTime;
     }
+
+    //void OnTriggerEnter2D(Collider2D hitInfo)
+    //{
+    //    if (hitInfo.gameObject.tag == "Enemy")
+    //    {
+    //        Destroy(gameObject);
+    //        Destroy(hitInfo.gameObject);
+    //    }
+
+    //}
     
 }

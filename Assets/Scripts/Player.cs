@@ -1,11 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
-
-
+using UnityEngine.SceneManagement;
 
 public class Player : UIScript
 {
@@ -15,9 +9,8 @@ public class Player : UIScript
     public Transform firepoint;
     public float currentPlayerHealth;
     public float maxPlayerHealth = 100;
-
-    private float _damageInterval = 1.0f;
-    private float _lastDamageTime;
+    private float damageInterval = 1.0f;
+    private float lastDamageTime;
 
     private void Start()
     {
@@ -71,30 +64,29 @@ public class Player : UIScript
             float angle = Mathf.Atan2(verticalMovement, horizontalMovement) * Mathf.Rad2Deg;
             firepoint.rotation = Quaternion.Euler(0, 0, angle);
         }
-        
-
     }
     public void OnCollisionStay2D(Collision2D collision)
     {
-        Debug.Log(collision.gameObject.tag);
         if (collision.gameObject.tag == "Enemy")
         {
-            if (Time.time > _lastDamageTime + _damageInterval)
+            if (Time.time > lastDamageTime + damageInterval)
             {
                 TakeDamage(1);
-                _lastDamageTime = Time.time;
+                lastDamageTime = Time.time;
             }
         }
-
         if (collision.gameObject.tag == "SmallExp")
         {
             UpdateExperience(2.0f);
             Destroy(collision.gameObject);
         }
     }
-
     public void TakeDamage(int damage)
     {
+        if(currentPlayerHealth <= 0f)
+        {
+            SceneManager.LoadScene("StartMenu");
+        }
         currentPlayerHealth -= damage;
     }
 }

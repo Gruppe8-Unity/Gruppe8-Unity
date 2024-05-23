@@ -16,9 +16,9 @@ GameObject:
   - component: {fileID: 8273958276278192019}
   - component: {fileID: 7645288124126097414}
   - component: {fileID: 2991497439131883747}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SpiritElement
-  m_TagString: Weapon
+  m_TagString: Spirit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -126,7 +126,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -233,4 +233,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56a85f85973ce2648a9e790289ef2aa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 8273958276278192019}

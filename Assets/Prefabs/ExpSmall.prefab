@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4135077281471538654}
   - component: {fileID: 4135077281471538655}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DiamondSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 4135077281637696608}
   - component: {fileID: 4135077281637696611}
   - component: {fileID: 7510448014624447035}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ExpSmall
   m_TagString: SmallExp
   m_Icon: {fileID: 0}

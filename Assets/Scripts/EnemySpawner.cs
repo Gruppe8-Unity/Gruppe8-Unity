@@ -1,39 +1,30 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField]
-    private GameObject _enemyPrefab;
+    private GameObject basicEnemyPrefab;
 
-    [SerializeField]
-    private float _minimumSpawnTime;
+    private float minimumSpawnTime = 1;
+    private float maximumSpawnTime = 4;
+    private float timeUntilSpawn;
 
-    [SerializeField]
-    private float _maximumSpawnTime;
-
-    private float _timeUntilSpawn;
-
-    private void SetTimeUntilSpawn()
-    {
-        _timeUntilSpawn = UnityEngine.Random.Range(_minimumSpawnTime, _maximumSpawnTime);
-    }
     private void Awake()
     {
         SetTimeUntilSpawn();
     }
-
     private void Update()
     {
-        _timeUntilSpawn -= Time.deltaTime;
+        timeUntilSpawn -= Time.deltaTime;
 
-        if (_timeUntilSpawn <= 0)
+        if (timeUntilSpawn <= 0)
         {
-            Instantiate(_enemyPrefab, transform.position, Quaternion.identity);
+            Instantiate(basicEnemyPrefab, transform.position, Quaternion.identity);
             SetTimeUntilSpawn();
         }
+    }
+    private void SetTimeUntilSpawn()
+    {
+        timeUntilSpawn = UnityEngine.Random.Range(minimumSpawnTime, maximumSpawnTime);
     }
 }

@@ -1,17 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class UIScript : MonoBehaviour
 {
     public Player player;
-    private float _scoreCount = 0f;
-    private float _experienceCount = 0f;
-    private float _requiredExperience= 10f;
-    private int _levelCount;
+    private float scoreCount = 0f;
+    private float experienceCount = 0f;
+    private float requiredExperience= 10f;
+    private int levelCount = 1;
     
     public TextMeshProUGUI playerScore;
     public TextMeshProUGUI playerExperience;
@@ -36,24 +34,27 @@ public class UIScript : MonoBehaviour
     }
    public void UpdateScore()
    {
-       _scoreCount += 1.0f * 0.01f; 
-        playerScore.text = $"Score: {Mathf.Round(_scoreCount)}"; 
+       scoreCount += 1.0f * 0.01f; 
+        playerScore.text = $"Score: {Mathf.Round(scoreCount)}"; 
     }
     
     public void UpdateExperience(float amount)
     {
-        _experienceCount += amount;
-        if (_experienceCount >= _requiredExperience)
+        experienceCount += amount;
+        if (experienceCount >= requiredExperience)
         {
-            _experienceCount = 0;
-            _levelCount++;
-            _requiredExperience *= 1.2f;
+            experienceCount = 0;
+            levelCount++;
+            requiredExperience *= 1.2f;
         }
         
-        experienceBar.fillAmount = Mathf.Clamp( _experienceCount / _requiredExperience , 0, _requiredExperience);
+        experienceBar.fillAmount = Mathf.Clamp( experienceCount / requiredExperience , 0, requiredExperience);
 
-        playerExperience.text = $"{Mathf.Round(_experienceCount)} / {Mathf.Round(_requiredExperience)}";
-        playerCurrentLevel.text = $"Level: {Mathf.Round(_levelCount)}";
-
+        playerExperience.text = $"{Mathf.Round(experienceCount)} / {Mathf.Round(requiredExperience)}";
+        playerCurrentLevel.text = $"Level: {Mathf.Round(levelCount)}";
+        if(levelCount == 30)
+        {
+            SceneManager.LoadScene("StartMenu");
+        }
     }
 }
