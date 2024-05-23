@@ -19,5 +19,6 @@ public class Shoot : MonoBehaviour
     void ShootArrow()
     {
         Instantiate(arrowPrefab, firePoint.position, firePoint.rotation);
+        FindObjectOfType<AudioManager>().Play("ArrowSound");
     }
 }

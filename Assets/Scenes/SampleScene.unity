@@ -367,6 +367,105 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &619568120
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 619568122}
+  - component: {fileID: 619568121}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &619568121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619568120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc74c5e390eabe342bc663522a2d38a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - clip: {fileID: 8300000, guid: a35e6142641025e4aa738148e6cd6461, type: 3}
+    volume: 0.5
+    pitch: 1.25
+    name: ExpSound
+    source: {fileID: 0}
+    loop: 0
+  - clip: {fileID: 8300000, guid: 0441e081fd9f34046afdc0840c1e32d5, type: 3}
+    volume: 0.5
+    pitch: 1.25
+    name: AxeSound
+    source: {fileID: 0}
+    loop: 0
+  - clip: {fileID: 8300000, guid: 59fda615505ccef41949cec9b5f0bca0, type: 3}
+    volume: 0.5
+    pitch: 1.25
+    name: Theme
+    source: {fileID: 0}
+    loop: 1
+  - clip: {fileID: 8300000, guid: c22e46bbfc608164da6daaeb80402864, type: 3}
+    volume: 1
+    pitch: 1.25
+    name: SpiritSound
+    source: {fileID: 0}
+    loop: 0
+  - clip: {fileID: 8300000, guid: f12ef70764efd2c499961d16a5bfede0, type: 3}
+    volume: 1
+    pitch: 1.25
+    name: ArrowSound
+    source: {fileID: 0}
+    loop: 0
+  - clip: {fileID: 8300000, guid: e7f5cb2c88c3a284799cffd80677c97a, type: 3}
+    volume: 0.533
+    pitch: 1.25
+    name: EnemyDeathSound
+    source: {fileID: 0}
+    loop: 0
+  - clip: {fileID: 8300000, guid: 9f2b4ae42b4bfbe4e910cf5cf8c54039, type: 3}
+    volume: 1
+    pitch: 1.25
+    name: LevelUp
+    source: {fileID: 0}
+    loop: 0
+  - clip: {fileID: 8300000, guid: 8c7bda37f23d8fc40975e1e15ffdcd7c, type: 3}
+    volume: 0.67
+    pitch: 0.48
+    name: PlayerHitSound
+    source: {fileID: 0}
+    loop: 0
+  - clip: {fileID: 8300000, guid: 664e230e93eb52a4ab590c1ac269c9d7, type: 3}
+    volume: 0.571
+    pitch: 1.25
+    name: PlayerDeathSound
+    source: {fileID: 0}
+    loop: 0
+--- !u!4 &619568122
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619568120}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &668175294
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1392,6 +1491,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1953039179}
     - target: {fileID: 2837072103063766840, guid: e4666a3c0a134cb478bf710745a96255, type: 3}
+      propertyPath: maxPlayerHealth
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2837072103063766840, guid: e4666a3c0a134cb478bf710745a96255, type: 3}
       propertyPath: playerExperience
       value: 
       objectReference: {fileID: 2064653960}
@@ -1451,6 +1554,18 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 7325418905242355500, guid: e4666a3c0a134cb478bf710745a96255, type: 3}
+      propertyPath: clip
+      value: 
+      objectReference: {fileID: 8300000, guid: c22e46bbfc608164da6daaeb80402864, type: 3}
+    - target: {fileID: 7325418905242355500, guid: e4666a3c0a134cb478bf710745a96255, type: 3}
+      propertyPath: spiritClip
+      value: 
+      objectReference: {fileID: 8300000, guid: e4a044d2ba5cc754a8a7ba76dfeacc7d, type: 3}
+    - target: {fileID: 7325418905242355500, guid: e4666a3c0a134cb478bf710745a96255, type: 3}
+      propertyPath: spiritSound
+      value: 
+      objectReference: {fileID: 7094595436840012605, guid: 4ec817260f5fc7648bcd0f40acd0fa29, type: 3}
     - target: {fileID: 7926383168189365766, guid: e4666a3c0a134cb478bf710745a96255, type: 3}
       propertyPath: firePoint
       value: 
@@ -1489,3 +1604,4 @@ SceneRoots:
   - {fileID: 1099981380}
   - {fileID: 668175294}
   - {fileID: 1218637083}
+  - {fileID: 619568122}

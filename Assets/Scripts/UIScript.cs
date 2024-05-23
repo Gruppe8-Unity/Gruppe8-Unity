@@ -20,6 +20,7 @@ public class UIScript : MonoBehaviour
     private void Start()
     {
         UpdateExperience(0);
+        FindObjectOfType<AudioManager>().Play("Theme");
     }
 
     private void Update()
@@ -46,6 +47,7 @@ public class UIScript : MonoBehaviour
             experienceCount = 0;
             levelCount++;
             requiredExperience *= 1.2f;
+            FindObjectOfType<AudioManager>().Play("LevelUp");
         }
         
         experienceBar.fillAmount = Mathf.Clamp( experienceCount / requiredExperience , 0, requiredExperience);
