@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Shoot : MonoBehaviour
+public class ShootArrow : MonoBehaviour
 {
     public Transform firePoint;
     public GameObject arrowPrefab;
@@ -8,15 +8,25 @@ public class Shoot : MonoBehaviour
     
     void Update()
     {
-        if (arrowTimer <= 0)
-        {
-            ShootArrow();
-            arrowTimer = 1;
-        }
+        DetermineShootArrow();
+        DecrementArrowTimer();
+    }
+
+    void DecrementArrowTimer()
+    {
         arrowTimer -= Time.deltaTime;
     }
+
+    void DetermineShootArrow()
+    {
+        if (arrowTimer <= 0)
+        {
+            Shoot();
+            arrowTimer = 1;
+        }
+    }
     
-    void ShootArrow()
+    void Shoot()
     {
         Instantiate(arrowPrefab, firePoint.position, firePoint.rotation);
         FindObjectOfType<AudioManager>().Play("ArrowSound");
