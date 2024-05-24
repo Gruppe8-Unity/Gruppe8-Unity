@@ -8,19 +8,39 @@ public class WeaponAxe : MonoBehaviour
     public Rigidbody2D axeRigidBody;
     public Vector2 throwDirection = new Vector2(0.2f, 1f);
     public float axeLifeTime = 5f;
+    
     void Start()
     {
-        Vector2 normalizedDirection = throwDirection.normalized;
-        axeRigidBody.velocity = normalizedDirection * speed;
+        DetermineAxeVelocity();
     }
 
     void Update()
+    {
+        DetermineIfAxeDestroy();
+        DecrementAxeLifeTime();
+    }
+
+    void DetermineAxeVelocity()
+    {
+        Vector2 normalizedDirection = DetermineAxeDirectionNormalized();
+        axeRigidBody.velocity = normalizedDirection * speed;
+    }
+
+    Vector2 DetermineAxeDirectionNormalized()
+    {
+        return throwDirection.normalized;
+    }
+
+    void DetermineIfAxeDestroy()
     {
         if (axeLifeTime < 0)
         {
             Destroy(gameObject);
         }
+    }
 
+    void DecrementAxeLifeTime()
+    {
         axeLifeTime -= Time.deltaTime;
     }
     
