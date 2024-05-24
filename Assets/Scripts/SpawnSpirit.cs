@@ -4,42 +4,71 @@ using UnityEngine;
 public class SpawnSpirit : MonoBehaviour
 {
     public GameObject spiritPrefab;
-    public Transform playerTransform; // Assign your character's transform in the Inspector
-    public float orbitRadius = 2f; // Radius of the orbit circle
-    public float orbitSpeed = 20f; // Speed of rotation around the player
-    public int numberOfSpirits = 5; // Number of spirits to spawn
-    private List<GameObject> spirits = new List<GameObject>(); // List to store spawned spirits
+    public Transform playerTransform; 
+    public float orbitRadius = 2f; 
+    public float orbitSpeed = 20f; 
+    public int numberOfSpirits = 5; 
+    private List<GameObject> spirits = new List<GameObject>(); 
     public float timeUntilSpawn = 10f;
     public float timeUntilDespawn = 5f;
     public bool isSpawned = false;
 
     void Update()
     {
+        DetermineIfSpawnedOrDespawn();
+    }
+
+    void DetermineIfSpawnedOrDespawn()
+    {
         if (isSpawned)
         {
-            if (timeUntilDespawn <= 0f)
-            {
-                DeleteSpirits();
-            }
-            for (int i = 0; i < spirits.Count; i++)
-            {
-                if (spirits[i] != null)
-                {
-                    float angle = (Time.time * orbitSpeed) + (i * 360f / numberOfSpirits);
-                    Vector3 offset = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad), 0) * orbitRadius;
-                    spirits[i].transform.position = playerTransform.position + offset;
-                }
-            }
-            timeUntilDespawn -= Time.deltaTime;
+            DetermineSpiritDespawn();
+            RotateSpiritsAroundPlayer();
+            DecrementSpiritTimerDespawn();
         }
         else
         {
-            if (timeUntilSpawn <= 0f)
-            {
-                CreateSpirits();
+            DetermineSpiritSpawn();
+            DecrementSpiritTimerSpawn();
+        }
+    }
 
+    void DetermineSpiritSpawn()
+    {
+        if (timeUntilSpawn <= 0f)
+        {
+            CreateSpirits();
+
+        }
+    }
+    void DecrementSpiritTimerSpawn()
+    {
+        timeUntilSpawn -= Time.deltaTime;
+    }
+
+    void DecrementSpiritTimerDespawn()
+    {
+        timeUntilDespawn -= Time.deltaTime;
+    }
+
+    void RotateSpiritsAroundPlayer()
+    {
+        for (int i = 0; i < spirits.Count; i++)
+        {
+            if (spirits[i] != null)
+            {
+                float angle = (Time.time * orbitSpeed) + (i * 360f / numberOfSpirits);
+                Vector3 offset = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad), 0) * orbitRadius;
+                spirits[i].transform.position = playerTransform.position + offset;
             }
-            timeUntilSpawn -= Time.deltaTime;
+        }
+    }
+
+    void DetermineSpiritDespawn()
+    {
+        if (timeUntilDespawn <= 0f)
+        {
+            DeleteSpirits();
         }
     }
     void CreateSpirits()
