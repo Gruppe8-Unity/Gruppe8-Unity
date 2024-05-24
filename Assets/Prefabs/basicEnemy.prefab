@@ -167,12 +167,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 278b1d0ac47d9434db90530fffee8407, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  expPrefab: {fileID: 4135077281637696610, guid: a3b3a6523f7fc0e4c875acef3d4f47a5, type: 3}
   expDropPoint: {fileID: 7227450124994824378}
-  expCollider: {fileID: 4135077281637696608, guid: a3b3a6523f7fc0e4c875acef3d4f47a5, type: 3}
-  enemyCollider: {fileID: 2090894574968416148}
-  enemyLayer: EnemyLayer
-  expLayer: ExperienceLayer
+  smallExpPrefab: {fileID: 4135077281637696610, guid: a3b3a6523f7fc0e4c875acef3d4f47a5, type: 3}
 --- !u!50 &2249010877867602300
 Rigidbody2D:
   serializedVersion: 4

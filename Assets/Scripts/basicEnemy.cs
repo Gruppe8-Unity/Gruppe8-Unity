@@ -1,64 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class basicEnemy : Enemy
+public class BasicEnemy : Enemy
 {
-    private float movementSpeed = 2;
-    private float rotationSpeed = 1000;
-    private float enemyAwarenessDistance = 50;
-    private Rigidbody2D playerRigidBody;
-    private Transform playerTransform;
-
-    public Vector2 DirectionToPlayer { get; private set; }
-    public GameObject expPrefab;
-    public Transform expDropPoint;
+    public GameObject smallExpPrefab;
     
-    private void Awake()
-    {
-        playerTransform = FindObjectOfType<Player>().transform;
-        playerRigidBody = GetComponent<Rigidbody2D>();
-    }
-
     private void Update()
     {
         DetermineEnemyRotation();
     }
-
-    void DetermineEnemyRotation()
-    {
-        Vector2 enemyToPlayerVector = playerTransform.position - transform.position;
-        DirectionToPlayer = enemyToPlayerVector.normalized;
-
-        if (enemyToPlayerVector.magnitude <= enemyAwarenessDistance)
-        {
-            RotateEnemy();
-        }
-        SetVelocity();
-    }
     
-    private void RotateEnemy()
-    {
-        Quaternion targetRotation = Quaternion.LookRotation(transform.forward, DirectionToPlayer);
-        Quaternion rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-        playerRigidBody.SetRotation(rotation);
-    }
-    private void SetVelocity()
-    {
-        if (DirectionToPlayer == Vector2.zero)
-        {
-            playerRigidBody.velocity = Vector2.zero;
-        }
-        else
-        {
-            playerRigidBody.velocity = transform.up * movementSpeed;
-        }
-    }
-
-    void OnKilled()
-    {
-        Instantiate(expPrefab, expDropPoint.position, Quaternion.Euler(0, 0, 0));
-    }
     public void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Arrow")
@@ -67,19 +17,19 @@ public class basicEnemy : Enemy
             collision.gameObject.GetComponent<SpriteRenderer>().enabled = false;
             Destroy(collision.gameObject, 0.3f);
             FindObjectOfType<AudioManager>().Play("EnemyDeathSound");
-            OnKilled();
+            OnKilled(smallExpPrefab);
         }
         if(collision.gameObject.tag == "Spirit")
         {
             Destroy(gameObject);
             FindObjectOfType<AudioManager>().Play("EnemyDeathSound");
-            OnKilled();
+            OnKilled(smallExpPrefab);
         }
         if(collision.gameObject.tag == "Axe")
         {
             Destroy(gameObject);
             FindObjectOfType<AudioManager>().Play("EnemyDeathSound");
-            OnKilled();
+            OnKilled(smallExpPrefab);
         }
     }
 }
