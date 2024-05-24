@@ -4,7 +4,6 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField]
     private GameObject basicEnemyPrefab;
-
     private float minimumSpawnTime = 1;
     private float maximumSpawnTime = 4;
     private float timeUntilSpawn;
@@ -15,13 +14,22 @@ public class EnemySpawner : MonoBehaviour
     }
     private void Update()
     {
-        timeUntilSpawn -= Time.deltaTime;
+        DecrementCounter();
+        SpawnEnemyOnCounterZero();
+    }
 
+    void SpawnEnemyOnCounterZero()
+    {
         if (timeUntilSpawn <= 0)
         {
             Instantiate(basicEnemyPrefab, transform.position, Quaternion.identity);
             SetTimeUntilSpawn();
         }
+    }
+
+    void DecrementCounter()
+    {
+        timeUntilSpawn -= Time.deltaTime;
     }
     private void SetTimeUntilSpawn()
     {
