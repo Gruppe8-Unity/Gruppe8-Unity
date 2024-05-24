@@ -1,11 +1,16 @@
-using UnityEngine.Audio;
 using UnityEngine;
 using System;
 
 public class AudioManager : MonoBehaviour
 {
     public Sound[] sounds;
+    
     void Awake()
+    {
+        InstantiateSounds();
+    }
+
+    void InstantiateSounds()
     {
         foreach (Sound s in sounds)
         {
@@ -16,14 +21,13 @@ public class AudioManager : MonoBehaviour
             s.source.loop = s.loop;
         }
     }
-
-    // Update is called once per frame
+    
     public void Play(string name)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
         if (s == null)
         {
-            Debug.LogWarning("Invalid sound name:" + name + "not found");
+            Debug.LogWarning("Invalid sound name: " + name + " not found");
             return;
         }
         s.source.Play();
