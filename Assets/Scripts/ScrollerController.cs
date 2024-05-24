@@ -1,20 +1,19 @@
 using UnityEngine;
 
-public class BackgroundScroller : MonoBehaviour
+public abstract class ScrollerController : MonoBehaviour
 {
     [Range(-1f, 1f)]
     public float scrollSpeed = 0.5f;
 
     private float offset;
     private Material mat;
-    void Start()
+    
+    public void BeginScroll()
     {
         mat = GetComponent<Renderer>().material;
-        FindObjectOfType<AudioManager>().Play("MenuSound");
     }
-
-    // Update is called once per frame
-    void Update()
+    
+    public void UpdateScroll()
     {
         offset += (Time.deltaTime * scrollSpeed) / 10;
         mat.SetTextureOffset("_MainTex", new Vector2(offset, 0));
