@@ -9,7 +9,7 @@ Gameplay Loop
 Spillet starter direkte etter å ha trykket på startknappen og ninjaen din har 3 startvåpen.
 Ninjaen sitt arsenal består av den dødelige og presise pilen, den brutale svingende øks og de mystiske sjeler som trer frem når det er beleilig før å hjelpe ninjaen i sin kamp mot de uendelige hordene av fiender.
 
-Ninjaen slakter motstanden og mottar erfaringspoeng som bringer ninjaen nærmere og nærmere slagets slutt. Ryktene sier at dersom ninjaen tilegner seg et erfaringsnivå på 30 at det endelig vil bli mulig å rømme fra den endeløse strid og starte sitt neste mål... Finne sin forsvunnede familie.
+Ninjaen slakter motstanden og mottar erfaringspoeng som bringer ninjaen nærmere og nærmere slagets slutt. Ryktene sier at dersom ninjaen tilegner seg et erfaringsnivå på 15 at det endelig vil bli mulig å rømme fra den endeløse strid og starte sitt neste mål... Finne sin forsvunnede familie.
 
 Ved spillslutt vil du bli sendt til en sluttspillskjerm, det bestemmes av om du har overlevd den mørke armé eller falt som et bytte i hederlige krig. Du vil sitte igjen med ett eneste brennende spørsmål... Vil jeg noen gang kunne komme meg ut?
 
