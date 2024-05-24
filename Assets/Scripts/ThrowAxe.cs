@@ -5,6 +5,7 @@ public class ThrowAxe : MonoBehaviour
     public Transform axeThrowPoint;
     public GameObject axePrefab;
     public float axeTimer = 1;
+    
     void Update()
     {
         DetermineThrow();
@@ -17,6 +18,11 @@ public class ThrowAxe : MonoBehaviour
             Throw();
             axeTimer= 1;
         }
+        DecrementAxeThrowTimer();
+    }
+
+    void DecrementAxeThrowTimer()
+    {
         axeTimer-= Time.deltaTime;
     }
     public void Throw()

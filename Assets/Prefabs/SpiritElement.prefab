@@ -11,11 +11,10 @@ GameObject:
   - component: {fileID: 8752670827685969666}
   - component: {fileID: 8752670827685969665}
   - component: {fileID: 8752670827685969664}
-  - component: {fileID: 8949435127118090259}
   - component: {fileID: 8273958276278192019}
   - component: {fileID: 7645288124126097414}
-  - component: {fileID: 2991497439131883747}
   - component: {fileID: 7094595436840012605}
+  - component: {fileID: 6537025934527617556}
   m_Layer: 7
   m_Name: SpiritElement
   m_TagString: Spirit
@@ -111,19 +110,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &8949435127118090259
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8752670827685969679}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84d6e1b734895c040a57c33b1480dfbc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 0
 --- !u!50 &8273958276278192019
 Rigidbody2D:
   serializedVersion: 4
@@ -186,18 +172,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &2991497439131883747
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8752670827685969679}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56a85f85973ce2648a9e790289ef2aa6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!82 &7094595436840012605
 AudioSource:
   m_ObjectHideFlags: 0
@@ -294,3 +268,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6537025934527617556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8752670827685969679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7301fae476735f44aa65d6d57b3ee55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spiritPrefab: {fileID: 8752670827685969679}
+  playerTransform: {fileID: 2837072103063766841, guid: e4666a3c0a134cb478bf710745a96255, type: 3}
+  orbitRadius: 2
+  orbitSpeed: 20
+  numberOfSpirits: 5
+  timeUntilSpawn: 10
+  timeUntilDespawn: 5
+  isSpawned: 0

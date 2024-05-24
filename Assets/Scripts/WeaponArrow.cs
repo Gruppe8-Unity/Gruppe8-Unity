@@ -5,7 +5,7 @@ public class WeaponArrow : Weapon
 
     public float speed = 20f;
     public Rigidbody2D arrowRigidBody;
-    public float arrowTimer = 5;
+    public float arrowTimer = 5f;
     
     void Start()
     {
@@ -14,21 +14,8 @@ public class WeaponArrow : Weapon
 
     private void Update()
     {
-        if(arrowTimer < 0)
-        {
-            Destroy(gameObject); // To keep arrows from existing forever.
-        }
-        arrowTimer -= Time.deltaTime;
+        DetermineWeaponDestroy(arrowTimer);
+        arrowTimer = DecrementWeaponLifeTime(arrowTimer);
     }
-
-    //void OnTriggerEnter2D(Collider2D hitInfo)
-    //{
-    //    if (hitInfo.gameObject.tag == "Enemy")
-    //    {
-    //        Destroy(gameObject);
-    //        Destroy(hitInfo.gameObject);
-    //    }
-
-    //}
     
 }

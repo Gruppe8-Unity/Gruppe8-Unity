@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponAxe : MonoBehaviour
+public class WeaponAxe : Weapon
 {
     public float speed = 20f;
     public Rigidbody2D axeRigidBody;
@@ -16,8 +16,8 @@ public class WeaponAxe : MonoBehaviour
 
     void Update()
     {
-        DetermineIfAxeDestroy();
-        DecrementAxeLifeTime();
+        DetermineWeaponDestroy(axeLifeTime);
+        axeLifeTime = DecrementWeaponLifeTime(axeLifeTime);
     }
 
     void DetermineAxeVelocity()
@@ -30,18 +30,4 @@ public class WeaponAxe : MonoBehaviour
     {
         return throwDirection.normalized;
     }
-
-    void DetermineIfAxeDestroy()
-    {
-        if (axeLifeTime < 0)
-        {
-            Destroy(gameObject);
-        }
-    }
-
-    void DecrementAxeLifeTime()
-    {
-        axeLifeTime -= Time.deltaTime;
-    }
-    
 }
