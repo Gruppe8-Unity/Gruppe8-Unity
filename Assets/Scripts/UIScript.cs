@@ -3,8 +3,6 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
-using System.Collections.Generic;
-using System.Linq;
 
 public class UIScript : MonoBehaviour
 {
